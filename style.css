@@ -65,6 +65,8 @@ body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto
 .field { margin: 12px 0; }
 label { display: block; margin-bottom: 6px; font-weight: 600; }
 .value { background: rgba(0,0,0,.25); border: 1px solid rgba(174,182,217,.2); border-radius: 8px; padding: 10px; overflow-wrap: anywhere; }
+.address-row { display: flex; gap: 8px; align-items: center; }
+.address-row .value { flex: 1; min-width: 0; }
 .balance { font-size: 1.2rem; color: var(--success); font-weight: 700; }
 .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 .blur { filter: blur(6px); }
@@ -72,6 +74,7 @@ label { display: block; margin-bottom: 6px; font-weight: 600; }
 button { background: var(--accent); color: #071225; border: none; border-radius: 8px; padding: 10px 12px; font-weight: 700; cursor: pointer; }
 button.danger { background: var(--danger); color: white; }
 .small-btn { margin-top: 8px; padding: 6px 10px; font-size: .85rem; }
+.icon-btn { width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
 input { width: 100%; border-radius: 8px; border: 1px solid rgba(174,182,217,.35); background: rgba(0,0,0,.25); color: var(--text); padding: 10px; }
 .muted { color: var(--muted); }
 .message { margin-top: 10px; min-height: 22px; }
@@ -81,3 +84,11 @@ input { width: 100%; border-radius: 8px; border: 1px solid rgba(174,182,217,.35)
 .tx-item { border: 1px solid rgba(174,182,217,.25); border-radius: 8px; padding: 10px; background: rgba(0,0,0,.2); }
 .tx-meta { color: var(--muted); font-size: .9rem; }
 .help { cursor: help; color: var(--accent); }
+
+@media (max-width: 640px) {
+  .app-header { padding: 20px 12px 8px; }
+  .container { margin-top: 12px; padding: 0 12px; }
+  .wallet-selector { flex-direction: column; align-items: stretch; }
+  .wallet-btn, .small-btn { width: 100%; margin-top: 0; }
+  .actions button { width: 100%; }
+}

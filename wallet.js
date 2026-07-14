@@ -86,16 +86,35 @@
     if (!Number.isFinite(amount) || amount <= 0) throw new Error('Amount must be greater than 0.'); 
     if (amount > active.balance) throw new Error('Insufficient balance.'); 
     active.balance = Number((active.balance - amount).toFixed(2)); 
+    const txId = makeTxId();
+    const timestamp = nowIso();
     const tx = {
-      id: makeTxId(),
-      timestamp: nowIso(),
+      id: txId,
+      timestamp,
       type: 'send',
       amount,
       from: active.wallet.address,
       to,
       status: 'confirmed (simulated)'
     }; 
-    addTx(s, tx); 
+    addTx(s, tx);
+
+    // Credit the recipient if the address belongs to another wallet in this simulator
+    const recipient = s.wallets.find(w => w.wallet && w.wallet.address === to && w.id !== active.id);
+    if (recipient) {
+      recipient.balance = Number((recipient.balance + amount).toFixed(2));
+      recipient.transactions.unshift({
+        id: txId,
+        timestamp,
+        type: 'receive',
+        amount,
+        from: active.wallet.address,
+        to,
+        status: 'confirmed (simulated)'
+      });
+      saveState(s);
+    }
+
     return tx; 
   }
   

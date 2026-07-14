@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Wallet Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Crypto Wallet Simulator</h1>
+      <p class="subtitle">A browser-based simulated crypto wallet — no real funds involved.</p>
+      <span class="warning">⚠️ This is a simulator. Do not use generated keys for real crypto assets.</span>
+    </header>
+
+    <main class="container">
+      <!-- Wallet Info -->
+      <section class="card">
+        <h2>Your Wallet</h2>
+        <div class="field">
+          <label>Address</label>
+          <div id="address" class="value mono">Not generated yet</div>
+        </div>
+        <div class="field">
+          <label>
+            Private Key
+            <span class="help" title="Never share your private key with anyone.">(?)</span>
+          </label>
+          <div id="privateKey" class="value mono blur">Not generated yet</div>
+          <button id="toggleKeyBtn" class="small-btn">Show / Hide Key</button>
+        </div>
+        <div class="field">
+          <label>Balance</label>
+          <div id="balance" class="value balance">0.00 SIM</div>
+        </div>
+        <div class="actions">
+          <button id="generateBtn">Generate Wallet</button>
+          <button id="receiveBtn">Receive 100 SIM (Faucet)</button>
+          <button id="resetBtn" class="danger">Reset Simulator</button>
+        </div>
+        <div id="message" class="message"></div>
+      </section>
+
+      <!-- Send Funds -->
+      <section class="card">
+        <h2>Send SIM</h2>
+        <form id="sendForm">
+          <div class="field">
+            <label for="recipient">Recipient Address</label>
+            <input id="recipient" name="recipient" type="text" placeholder="0x…" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="amount">Amount (SIM)</label>
+            <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" />
+          </div>
+          <div class="actions">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Transaction History -->
+      <section class="card">
+        <h2>Transaction History</h2>
+        <ul id="txList" class="tx-list"></ul>
+      </section>
+    </main>
+
+    <script src="wallet.js"></script>
+    <script src="ui.js"></script>
+  </body>
+</html>

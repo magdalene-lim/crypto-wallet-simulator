@@ -4,9 +4,23 @@
   const walletNameEl=$('walletName'), addressEl=$('address'), privateKeyEl=$('privateKey'), balanceEl=$('balance'), txListEl=$('txList'), messageEl=$('message');
   const generateBtn=$('generateBtn'), receiveBtn=$('receiveBtn'), resetBtn=$('resetBtn'), sendForm=$('sendForm'), toggleKeyBtn=$('toggleKeyBtn');
   const wallet1Btn=$('wallet1Btn'), wallet2Btn=$('wallet2Btn'), renameBtn=$('renameBtn');
+  const copyAddressBtn=$('copyAddressBtn');
 
   const showMessage=(t,c='')=>{ messageEl.textContent=t; messageEl.className=`message ${c}`.trim(); };
   const fmt=(iso)=>new Date(iso).toLocaleString();
+  const copyText=(text)=>{
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    const input = document.createElement('textarea');
+    input.value = text;
+    input.setAttribute('readonly', '');
+    input.style.position = 'absolute';
+    input.style.left = '-9999px';
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    return Promise.resolve();
+  };
 
   function renderWallet(){
     const active = window.WalletSim.getActiveWallet(state);
@@ -106,6 +120,21 @@
   });
   
   toggleKeyBtn.addEventListener('click',()=>privateKeyEl.classList.toggle('blur'));
+  
+  copyAddressBtn.addEventListener('click', async ()=>{
+    const active = window.WalletSim.getActiveWallet(state);
+    const address = active.wallet && active.wallet.address;
+    if (!address) {
+      showMessage('Generate a wallet first to copy its address.', 'error');
+      return;
+    }
+    try {
+      await copyText(address);
+      showMessage('Wallet address copied to clipboard.', 'success');
+    } catch {
+      showMessage('Failed to copy address. Please copy it manually.', 'error');
+    }
+  });
 
   render();
 })();

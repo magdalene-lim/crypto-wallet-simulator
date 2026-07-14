@@ -97,7 +97,7 @@
       to,
       status: 'confirmed (simulated)'
     }; 
-    addTx(s, tx);
+    active.transactions.unshift(tx);
 
     // Credit the recipient if the address belongs to another wallet in this simulator
     const recipient = s.wallets.find(w => w.wallet && w.wallet.address === to && w.id !== active.id);
@@ -112,9 +112,9 @@
         to,
         status: 'confirmed (simulated)'
       });
-      saveState(s);
     }
 
+    saveState(s);
     return tx; 
   }
   

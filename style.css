@@ -6,14 +6,62 @@
   --accent: #6ea8fe;
   --success: #34d399;
   --danger: #f87171;
+  --warning: #fbbf24;
 }
 * { box-sizing: border-box; }
 body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: linear-gradient(180deg, #0c1020, #121933); color: var(--text); }
 .app-header { padding: 24px 16px 8px; text-align: center; }
 .subtitle { margin-top: 0; color: var(--muted); }
-.warning { display: inline-block; margin-top: 8px; padding: 8px 12px; border-radius: 8px; background: rgba(248,113,113,.15); border: 1px solid rgba(248,113,113,.4); }
+.disclaimer { 
+  display: inline-block; 
+  margin-top: 12px; 
+  padding: 12px 16px; 
+  border-radius: 8px; 
+  background: rgba(251, 191, 36, 0.15); 
+  border: 2px solid rgba(251, 191, 36, 0.5); 
+  color: var(--warning);
+  max-width: 700px;
+  line-height: 1.5;
+}
 .container { max-width: 980px; margin: 16px auto 40px; padding: 0 16px; display: grid; gap: 16px; }
 .card { background: rgba(26,31,54,.9); border: 1px solid rgba(174,182,217,.2); border-radius: 12px; padding: 16px; }
+.guide { background: rgba(52, 211, 153, 0.05); border-color: rgba(52, 211, 153, 0.3); }
+.guide h2 { color: var(--success); }
+.guide-steps { 
+  margin: 12px 0; 
+  padding-left: 24px; 
+  line-height: 1.8; 
+}
+.guide-steps li { margin: 8px 0; }
+.guide-tip { 
+  margin-top: 12px; 
+  padding: 10px; 
+  background: rgba(110, 168, 254, 0.1); 
+  border-left: 3px solid var(--accent); 
+  border-radius: 4px; 
+}
+.wallet-selector { 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap; 
+  align-items: center; 
+}
+.wallet-btn { 
+  flex: 1; 
+  min-width: 120px; 
+  background: rgba(110, 168, 254, 0.2); 
+  border: 2px solid rgba(110, 168, 254, 0.4); 
+  transition: all 0.2s; 
+}
+.wallet-btn:hover { 
+  background: rgba(110, 168, 254, 0.3); 
+}
+.wallet-btn.active { 
+  background: var(--accent); 
+  border-color: var(--accent); 
+  color: #071225; 
+  font-weight: 700; 
+}
 .field { margin: 12px 0; }
 label { display: block; margin-bottom: 6px; font-weight: 600; }
 .value { background: rgba(0,0,0,.25); border: 1px solid rgba(174,182,217,.2); border-radius: 8px; padding: 10px; overflow-wrap: anywhere; }
@@ -22,7 +70,7 @@ label { display: block; margin-bottom: 6px; font-weight: 600; }
 .blur { filter: blur(6px); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 button { background: var(--accent); color: #071225; border: none; border-radius: 8px; padding: 10px 12px; font-weight: 700; cursor: pointer; }
-button.danger { background: var(--danger); }
+button.danger { background: var(--danger); color: white; }
 .small-btn { margin-top: 8px; padding: 6px 10px; font-size: .85rem; }
 input { width: 100%; border-radius: 8px; border: 1px solid rgba(174,182,217,.35); background: rgba(0,0,0,.25); color: var(--text); padding: 10px; }
 .muted { color: var(--muted); }

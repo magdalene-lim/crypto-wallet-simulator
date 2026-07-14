@@ -3,20 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crypto Wallet Simulator</title>
+    <title>RP Coin Wallet Simulator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="app-header">
-      <h1>Crypto Wallet Simulator</h1>
-      <p class="subtitle">A browser-based simulated crypto wallet — no real funds involved.</p>
-      <span class="warning">⚠️ This is a simulator. Do not use generated keys for real crypto assets.</span>
+      <h1>RP Coin Wallet Simulator</h1>
+      <p class="subtitle">A browser-based simulated crypto wallet for learning — no real funds involved.</p>
+      <div class="disclaimer">
+        <strong>📚 EDUCATIONAL SIMULATOR ONLY</strong><br>
+        This is a learning tool for educational purposes. It does NOT use real blockchain technology or real cryptocurrency. 
+        Do not use generated keys for actual crypto assets.
+      </div>
     </header>
 
     <main class="container">
+      <!-- Quick Start Guide -->
+      <section class="card guide">
+        <h2>📖 Quick Start Guide</h2>
+        <ol class="guide-steps">
+          <li><strong>Select a Wallet:</strong> Choose between Wallet 1 or Wallet 2 below. You can rename them!</li>
+          <li><strong>Generate Wallet:</strong> Click "Generate Wallet" to create a simulated address and private key.</li>
+          <li><strong>Receive RP Coins:</strong> Click "Receive 100 RP (Faucet)" to add test funds to your wallet.</li>
+          <li><strong>Send RP Coins:</strong> Enter a recipient address and amount, then click "Send" to transfer coins.</li>
+          <li><strong>View History:</strong> All transactions are recorded in the Transaction History section below.</li>
+        </ol>
+        <p class="guide-tip">💡 <strong>Tip:</strong> Try creating both wallets and sending coins between them to see how transfers work!</p>
+      </section>
+
+      <!-- Wallet Selector -->
+      <section class="card">
+        <h2>Select Wallet</h2>
+        <div class="wallet-selector">
+          <button id="wallet1Btn" class="wallet-btn active">Wallet 1</button>
+          <button id="wallet2Btn" class="wallet-btn">Wallet 2</button>
+          <button id="renameBtn" class="small-btn">Rename Current Wallet</button>
+        </div>
+      </section>
+
       <!-- Wallet Info -->
       <section class="card">
-        <h2>Your Wallet</h2>
+        <h2><span id="walletName">Wallet 1</span></h2>
         <div class="field">
           <label>Address</label>
           <div id="address" class="value mono">Not generated yet</div>
@@ -31,26 +58,26 @@
         </div>
         <div class="field">
           <label>Balance</label>
-          <div id="balance" class="value balance">0.00 SIM</div>
+          <div id="balance" class="value balance">0.00 RP</div>
         </div>
         <div class="actions">
           <button id="generateBtn">Generate Wallet</button>
-          <button id="receiveBtn">Receive 100 SIM (Faucet)</button>
-          <button id="resetBtn" class="danger">Reset Simulator</button>
+          <button id="receiveBtn">Receive 100 RP (Faucet)</button>
+          <button id="resetBtn" class="danger">Reset All Wallets</button>
         </div>
         <div id="message" class="message"></div>
       </section>
 
       <!-- Send Funds -->
       <section class="card">
-        <h2>Send SIM</h2>
+        <h2>Send RP Coins</h2>
         <form id="sendForm">
           <div class="field">
             <label for="recipient">Recipient Address</label>
             <input id="recipient" name="recipient" type="text" placeholder="0x…" autocomplete="off" />
           </div>
           <div class="field">
-            <label for="amount">Amount (SIM)</label>
+            <label for="amount">Amount (RP)</label>
             <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" />
           </div>
           <div class="actions">

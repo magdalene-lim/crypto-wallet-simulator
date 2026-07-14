@@ -1,41 +1,52 @@
-# Crypto Wallet Simulator
+# RP Coin Wallet Simulator
 
 An educational, browser-based simulator to help learners understand how digital crypto wallets work—**without using real blockchain or real funds**.
+
+## 📚 Educational Purpose Disclaimer
+
+⚠️ **This is a simulation for educational purposes only.** It does NOT interact with any real blockchain, does not use real cryptocurrency, and should never be used with real crypto assets. RP Coin is a simulated currency created solely for learning.
 
 ## Overview
 
 This simulator demonstrates core wallet concepts in an interactive way:
-- **Wallet Generation**: Create a simulated wallet with a public address and private key
-- **Send & Receive**: Simulate transactions between addresses
-- **Transaction History**: Track all simulated transactions
-- **Learning-Focused**: Tooltips and explanations for key concepts
-- **Persistent State**: Your wallet persists in browser storage
-
-⚠️ **Disclaimer**: This is a simulation for educational purposes only. It does NOT interact with any real blockchain and should never be used with real crypto assets.
+- **2 Wallets**: Create and manage two separate wallets that you can name
+- **Wallet Generation**: Create simulated wallets with public addresses and private keys
+- **Send & Receive**: Simulate transactions between addresses using RP Coins
+- **Transaction History**: Track all simulated transactions per wallet
+- **Learning-Focused**: Built-in guide and tooltips for key concepts
+- **Persistent State**: Your wallets persist in browser storage
 
 ## Features
 
-### 🪙 Wallet Management
-- Generate a new wallet with a simulated public address and private key
-- View current balance in SIM (simulated coin)
-- Reset wallet to start fresh
+### 🪙 Dual Wallet Management
+- Manage two separate wallets simultaneously
+- Customize wallet names for easy identification
+- Switch between wallets with one click
+- Each wallet has its own balance and transaction history
 
-### 💸 Transactions
-- **Receive funds**: Use a faucet to add test funds to your wallet
-- **Send funds**: Transfer to another simulated address
+### 💰 RP Coin Transactions
+- **Receive funds**: Use a faucet to add 100 RP test coins to your wallet
+- **Send funds**: Transfer RP coins to another simulated address
 - **Input validation**: Checks for valid address format and sufficient balance
 - **Transaction history**: Complete ledger of all transactions with timestamps
+
+### 📖 Quick Start Guide
+- Step-by-step instructions built into the interface
+- Helpful tips for learners
+- Clear explanations of wallet concepts
+- Interactive learning experience
 
 ### 📚 Educational Features
 - Tooltips explaining wallet addresses, private keys, and transaction flow
 - Clear labeling of simulated/mock values
 - Step-by-step transaction confirmation simulation
 - Visual feedback on success/error states
+- Prominent educational disclaimer
 
 ### 💾 Persistence
 - Wallet state saved in browser localStorage
 - Survives page refreshes
-- One-click reset available
+- One-click reset available for both wallets
 
 ## Getting Started
 
@@ -62,57 +73,81 @@ This simulator demonstrates core wallet concepts in an interactive way:
 
    Or simply drag `index.html` into your browser window.
 
-3. Your wallet is ready to use! Start by clicking **"Generate Wallet"** or **"Receive Funds"**.
+3. Your wallets are ready to use! Follow the Quick Start Guide in the interface.
+
+## How to Use
+
+### 1. Select a Wallet
+- Choose between Wallet 1 or Wallet 2
+- Click "Rename Current Wallet" to give it a custom name
+
+### 2. Generate a Wallet
+- Click "Generate Wallet" to create a simulated address and private key
+- Your wallet will have a unique address and balance
+
+### 3. Receive RP Coins
+- Click "Receive 100 RP (Faucet)" to add test funds
+- Each wallet can receive unlimited test funds
+
+### 4. Send RP Coins
+- Enter a recipient address (try the other wallet's address!)
+- Enter an amount to send
+- Click "Send" to complete the transaction
+
+### 5. View Transaction History
+- All transactions are recorded per wallet
+- Switch between wallets to see their individual histories
 
 ## Project Structure
 
 ```
 crypto-wallet-simulator/
-├── index.html          # Main HTML entry point
+├── index.html          # Main HTML entry point with guide
 ├── style.css           # Styling and layout
-├── wallet.js           # Wallet logic and utilities
+├── wallet.js           # Wallet logic (2 wallets support)
 ├── ui.js               # UI interactions and rendering
 └── README.md           # This file
 ```
 
 ## How It Works
 
-### 1. Wallet Generation
-- A random 40-character hex string is generated as your public address
+### Wallet Generation
+- Each wallet gets a random 40-character hex string as its public address
 - A mock private key is shown (clearly labeled as simulated)
-- Balance starts at 0 SIM
+- Each wallet starts with 0 RP balance
 
-### 2. Receiving Funds
-- Click **"Receive Funds"** to add 100 SIM to your balance via faucet
-- Each faucet transaction is recorded in history
+### RP Coin (Simulated Cryptocurrency)
+- RP is the simulated currency used in this wallet
+- It has no real-world value
+- Perfect for learning without financial risk
 
-### 3. Sending Funds
-- Enter a recipient address and amount
-- The simulator validates:
-  - Recipient address matches the expected format (40 hex chars)
-  - Amount is positive
-  - Your balance is sufficient
-- On success, funds are deducted and a transaction record is created
+### Multiple Wallets
+- Two independent wallets with separate balances and transaction histories
+- Transfer RP coins between your own wallets to learn how transactions work
+- Each wallet can be renamed for easy identification
 
-### 4. Transaction History
-- Every send/receive is logged with timestamp, type, amount, and addresses
-- Transactions are displayed in reverse chronological order (newest first)
+### Transactions
+- All standard validation (address format, sufficient balance)
+- Instant "confirmation" (no real blockchain delays)
+- Complete transaction records with timestamps and IDs
 
 ## Learning Concepts
 
 This simulator introduces learners to:
 - **Public Address**: Your wallet's receiving address (like an email for crypto)
 - **Private Key**: Secret key that signs transactions (never share!)
-- **Balance**: Total funds in your wallet
+- **Balance**: Total RP coins in your wallet
 - **Transactions**: Records of send/receive activity
 - **Transaction Hash**: Unique identifier for each transaction (simulated)
-- **Confirmation**: Process of a transaction being recorded (simulated here)
+- **Multiple Wallets**: Managing different accounts
+- **Wallet Management**: Organizing and naming wallets
 
 ## Disclaimers
 
 ⚠️ **This is a simulation only:**
 - No real blockchain is involved
-- No real funds are at risk
+- No real cryptocurrency or funds are at risk
+- RP Coin is entirely fictional and has no value
 - Private keys here are not cryptographically secure
 - This should never be used for real cryptocurrency
 
@@ -121,6 +156,7 @@ This simulator introduces learners to:
 - Understanding transaction concepts
 - Teaching blockchain basics to beginners
 - Interactive demonstrations in classrooms
+- Safe experimentation with multi-wallet scenarios
 
 ## Technical Notes
 
@@ -128,16 +164,6 @@ This simulator introduces learners to:
 - **localStorage**: Wallet data persists in browser storage (clear browser data to reset)
 - **Responsive design**: Works on desktop and mobile
 - **Beginner-friendly code**: Comments and clear structure for learning
-
-## Future Enhancements
-
-Possible improvements (out of scope for MVP):
-- Multiple wallet support
-- QR code generation for addresses
-- More realistic transaction fees
-- Network simulation (pending/confirmed states)
-- Export wallet data
-- Ledger visualization charts
 
 ## Contributing
 
